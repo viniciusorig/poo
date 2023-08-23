@@ -1,4 +1,4 @@
-from datetime import date
+import datetime
 
 class Cliente:
     def __init__(self, nome, cpf, nascimento):
@@ -10,6 +10,14 @@ class Cliente:
         print(f"Nome Titular: {self.__nome}\nCPF: {self.__cpf}\nNascimento: {self.__nascimento}")
 
 class Banco:
+    def __init__(self, nome, endereco):
+        self.nome = nome
+        self.endereco = endereco
+        self.list = []
+
+    def contasapp(self, conta):
+        self.list.append(conta)
+
     def saque(self, cliente, valor)->bool:
         if(cliente.saldo == 0):
             print("Nao saldo eh zero nao eh possivel realizar o saque")
@@ -17,12 +25,13 @@ class Banco:
         if((cliente.saldo - valor) < 0):
             print("nao sera possivel realizar o saque pois seu saldo ficaria negativo")
             return False
-        
         cliente.saldo -= valor
         return True
+    
     def deposito(self, cliente, valor)->bool:
         cliente.saldo += valor
         return True
+    
     def tranferencia(self, cliente_orig, cliente_dest, valor)->True:
         if(self.saque(cliente_orig, valor) == False):
             print("naao foi possivel realizar a tranferencia pois a conta de origem nao tem saldo")
