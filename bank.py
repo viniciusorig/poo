@@ -38,7 +38,6 @@ class Banco:
     def contasapp(self, conta:"Conta"):
         self.contas.append(conta)
 
-
 class Conta:
     def __init__(self, agencia, numero, saldo, cliente:"Cliente", banco:"Banco"):
         self.__agencia = agencia
@@ -47,7 +46,7 @@ class Conta:
         self.__cliente = cliente
         self.__banco = banco
         self.getBank().contasapp(self)
-        
+
     def __repr__(self) -> str:
        return f"Agencia: {self.getAgencia()}\nNumero: {self.getNumero()}\nSaldo_atual: {self.getSaldo()}"
 
